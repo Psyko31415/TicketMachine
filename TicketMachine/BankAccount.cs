@@ -1,5 +1,9 @@
-﻿namespace TicketMachine
+﻿using System;
+using System.Runtime.Serialization;
+
+namespace TicketMachine
 {
+    public class CantWithdrawANegativeAmountException : Exception { }
     public class BankAccount
     {
         private AMU balance;
