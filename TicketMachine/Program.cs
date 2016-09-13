@@ -11,9 +11,9 @@ namespace TicketMachine
         static void Main(string[] args)
         {
             TicketMachine tm = new TicketMachine(
-                new TicketPrice(2, 10.0),
-                new TicketPrice(22, 15.0),
-                new TicketPrice(101, 20.0)
+                new TicketData(2, 10.0, "Junior Ticket"),
+                new TicketData(22, 15.0, "Adult Ticket"),
+                new TicketData(101, 20.0, "Senior Ticket")
             );
 
             Person[] people =
@@ -22,6 +22,14 @@ namespace TicketMachine
                 new Person("Pommes", 23, new BankAccount(954)),
                 new Person("Daniel", 83, new BankAccount(3.7)),
                 new Person("Bierman", 3, new BankAccount(9001.420))
+            };
+
+            Interaction[] interactions =
+            {
+                new Interaction("press 'Add Junior Ticket' x2, press 'Add Adult Ticket' x4, press 'Buy'"),
+                new Interaction(""),
+                new Interaction(""),
+                new Interaction(""),
             };
 
             foreach (Person person in people)

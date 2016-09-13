@@ -5,22 +5,28 @@ namespace TicketMachine
 {
     public class TicketMachine : Machine, Interactable
     {
-        private TicketPrice[] ticketPrices;
+        private TicketData[] ticketData;
         private Dictionary<Person, TicketMachineTransaction> transactions;
         private List<TicketMachineHistory> history;
 
-        public TicketMachine(params TicketPrice[] ticketPrices)
+        public TicketMachine(params TicketData[] ticketData)
         {
-            this.ticketPrices = ticketPrices;
-            ui = new UserInterface(
-                new Button("Buy", buyTickets),
-                new Button("Cancel", cancelOrder)
-            );
+            this.ticketData = ticketData;
+            Dictionary<string, Button> buttons = new Dictionary<string, Button>(ticketData.Length * 2 + 2);
+            buttons.Add("Buy", new Button(buyTickets));
+            buttons.Add("Cancel", new Button(cancelOrder));
+            
+            for (int i = 2; i < ticketData.Length * 2 + 2; i++)
+            {
+                buttons.Add(i % 2 == 0 ? "Add " : "Sub " + ticketData[(i - 2) / 2].Title, new Button(alterTicket));
+            }
+
+            ui = new UserInterface(buttons);
             transactions = new Dictionary<Person, TicketMachineTransaction>(5);
             history = new List<TicketMachineHistory>(5);
         }
 
-        private bool cancelOrder(Person p)
+        private bool cancelOrder(Person p, Button b)
         {
             try
             {
@@ -34,11 +40,10 @@ namespace TicketMachine
             }
         }
 
-        private bool buyTickets(Person p)
+        private bool buyTickets(Person p, Button b)
         {
             try
             {
-                p.
                 return true;
             }
             catch (KeyNotFoundException e)
@@ -51,8 +56,13 @@ namespace TicketMachine
         {
             if (!transactions.ContainsKey(p))
             {
-                transactions.Add(p, new TicketMachineTransaction(ticketPrices));
+                transactions.Add(p, new TicketMachineTransaction(ticketData));
             }
+        }
+
+        public bool alterTicket(Person p, Button b)
+        {
+            return true;
         }
 
         public bool Interact(Person p)

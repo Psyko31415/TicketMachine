@@ -2,21 +2,19 @@
 
 namespace TicketMachine
 {
-    public delegate bool Action(Person p);
     public class Button : Interactable
     {
-        private string title;
+        public delegate bool Action(Person p, Button b);
         private Action action;
 
-        public Button(string title, Action action)
+        public Button(Action action)
         {
-            this.title = title;
             this.action = action;
         }
 
         public bool Interact(Person p)
         {
-            return action(p);
+            return action(p, this);
         }
     }
 }

@@ -3,7 +3,9 @@ using System.Runtime.Serialization;
 
 namespace TicketMachine
 {
-    public class CantWithdrawANegativeAmountException : Exception { }
+    public class CantOperateOnANegativeAmountException : Exception { }
+    public class YouAreTooPoorException : Exception { }
+
     public class BankAccount
     {
         private AMU balance;
@@ -21,8 +23,24 @@ namespace TicketMachine
         {
             if (amount < 0)
             {
-                throw new CantWithdrawANegativeAmountException();
+                throw new CantOperateOnANegativeAmountException();
             }
+            if (amount < balance)
+            {
+                throw new YouAreTooPoorException();
+            }
+            balance -= amount;
+            return balance;
+        }
+
+        public AMU Deposit(AMU amount)
+        {
+            if (amount < 0)
+            {
+                throw new CantOperateOnANegativeAmountException();
+            }
+            balance += amount;
+            return balance;
         }
 
         public override string ToString()
