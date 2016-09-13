@@ -26,15 +26,15 @@ namespace TicketMachine
 
             Interaction[] interactions =
             {
-                new Interaction("press 'Add Junior Ticket' x2, press 'Add Adult Ticket' x4, press 'Buy'"),
+                new Interaction("press 'Add Junior Ticket' x2; press 'Add Adult Ticket' x4; press 'Buy'; print 'string with \\';\\'';"),
                 new Interaction(""),
                 new Interaction(""),
                 new Interaction(""),
             };
 
-            foreach (Person person in people)
+            for (int i = 0; i < Math.Min(people.Length, interactions.Length); i++)
             {
-                person.Interact(tm);
+                people[i].Interact(tm, interactions[i]);
             }
         }
     }

@@ -18,9 +18,9 @@
             return string.Format("Name: {0} Age: {1} Money: {2}", name, age, bankAccount);
         }
 
-        public bool Interact(Interactable obj)
+        public Interaction.Status[] Interact(Interactable obj, Interaction action)
         {
-            return obj.Interact(this);
+            return obj.Interact(this, action);
         }
 
         public BankAccount BankAccount

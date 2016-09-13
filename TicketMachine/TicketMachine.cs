@@ -18,7 +18,7 @@ namespace TicketMachine
             
             for (int i = 2; i < ticketData.Length * 2 + 2; i++)
             {
-                buttons.Add(i % 2 == 0 ? "Add " : "Sub " + ticketData[(i - 2) / 2].Title, new Button(alterTicket));
+                buttons.Add((i % 2 == 0 ? "Add " : "Sub ") + ticketData[(i - 2) / 2].Title, new Button(alterTicket));
             }
 
             ui = new UserInterface(buttons);
@@ -26,48 +26,40 @@ namespace TicketMachine
             history = new List<TicketMachineHistory>(5);
         }
 
-        private bool cancelOrder(Person p, Button b)
+        private Interaction.Status cancelOrder(Person p, Button b)
         {
             try
             {
                 history.Add(new TicketMachineHistory(transactions[p], p, TicketMachineHistory.Action.Canceled));
                 transactions.Remove(p);
-                return true;
+                return Interaction.Status.Ok;
             }
             catch (KeyNotFoundException e)
             {
-                return false;
+                return Interaction.Status.KeyNotFoundError;
             }
         }
 
-        private bool buyTickets(Person p, Button b)
+        private Interaction.Status buyTickets(Person p, Button b)
         {
             try
             {
-                return true;
+                return Interaction.Status.Ok;
             }
             catch (KeyNotFoundException e)
             {
-                return false;
+                return Interaction.Status.KeyNotFoundError;
             }
         }
 
-        private void changeTicketsHelper(Person p)
+        public Interaction.Status alterTicket(Person p, Button b)
         {
-            if (!transactions.ContainsKey(p))
-            {
-                transactions.Add(p, new TicketMachineTransaction(ticketData));
-            }
+            return Interaction.Status.Ok;
         }
 
-        public bool alterTicket(Person p, Button b)
+        public Interaction.Status[] Interact(Person p, Interaction action)
         {
-            return true;
-        }
-
-        public bool Interact(Person p)
-        {
-            return true;
+            return action.Execute(ui, p);
         }
     }
 }

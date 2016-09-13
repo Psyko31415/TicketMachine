@@ -1,25 +1,63 @@
-﻿namespace TicketMachine
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace TicketMachine
 {
     public class Interaction
     {
-        private const string[] functions = ['press'];
+        public enum Status
+        {
+            Illegal,
+            Ok,
+            KeyNotFoundError
+        }
+        private string[] functions = {"press"};
 
-        private string code;
+        private List<Section> sections;
 
         public Interaction(string code)
         {
-            this.code = code;
+            sections = new List<Section>();
+
+            bool inString = false;
+            int sectionStart = 0;
 
             for (int i = 0; i < code.Length; i++)
             {
-                char c = code[i];
-                foreach (string function in functions)
+                if (code[i] == ';')
                 {
-                    if ()
+                    if (!inString)
+                    {
+                        sections.Add(new Section(code.Substring(sectionStart, i - sectionStart).Trim()));
+                        sectionStart = i + 1;
+                    }
+                }
+                else if (code[i] == '\'' && (i < 1 || code[i - 1] != '\\'))
+                {
+                    inString = !inString;
                 }
             }
         }
 
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder("Interaction:\n");
+            foreach (Section s in sections)
+            {
+                sb.AppendFormat("  {0};\n", s);
+            }
+            return sb.ToString();
+        }
 
+        public Interaction.Status[] Execute(UserInterface ui, Person p)
+        {
+            Interaction.Status[] ret = new Interaction.Status[sections.Count];
+            for (int i = 0; i < sections.Count; i++)
+            {
+                ret[i] = sections[i].Execute(ui, p);
+            }
+            return ret;
+        }
     }
 }

@@ -49,10 +49,12 @@
     <Compile Include="Button.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Interactable.cs" />
+    <Compile Include="Interaction.cs" />
     <Compile Include="Machine.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScriptFunctionDef.cs" />
+    <Compile Include="Section.cs" />
     <Compile Include="TicketMachine.cs" />
     <Compile Include="TicketMachineHistory.cs" />
     <Compile Include="TicketMachineTransaction.cs" />
@@ -61,6 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

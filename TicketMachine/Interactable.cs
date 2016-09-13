@@ -8,6 +8,6 @@ namespace TicketMachine
 {
     public interface Interactable
     {
-        bool Interact(Person p);
+        Interaction.Status[] Interact(Person p, Interaction action);
     }
 }
