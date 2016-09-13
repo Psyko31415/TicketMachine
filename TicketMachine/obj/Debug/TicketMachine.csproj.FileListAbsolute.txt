@@ -7,3 +7,6 @@ c:\users\anton.loof\documents\visual studio 2015\Projects\TicketMachine\TicketMa
 C:\Users\anton.loof\Desktop\c#\TicketMachine\TicketMachine\bin\Debug\TicketMachine.exe.config
 C:\Users\anton.loof\Desktop\c#\TicketMachine\TicketMachine\obj\Debug\TicketMachine.exe
 C:\Users\anton.loof\Desktop\c#\TicketMachine\TicketMachine\obj\Debug\TicketMachine.pdb
+C:\Users\Anton\Desktop\c#\TicketMachine\TicketMachine\bin\Debug\TicketMachine.exe.config
+C:\Users\Anton\Desktop\c#\TicketMachine\TicketMachine\obj\Debug\TicketMachine.exe
+C:\Users\Anton\Desktop\c#\TicketMachine\TicketMachine\obj\Debug\TicketMachine.pdb

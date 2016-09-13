@@ -6,13 +6,9 @@ namespace TicketMachine
     {
         public enum Action
         {
-            [Description("Canceled")]
             Canceled,
-            [Description("Accepted")]
             Accepted,
-            [Description("Denied")]
             Denied
-            
         };
 
         private TicketMachineTransaction history;
