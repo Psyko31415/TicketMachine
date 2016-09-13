@@ -1,0 +1,6 @@
+c:\users\anton.loof\documents\visual studio 2015\Projects\TicketMachine\TicketMachine\bin\Debug\TicketMachine.exe.config
+c:\users\anton.loof\documents\visual studio 2015\Projects\TicketMachine\TicketMachine\bin\Debug\TicketMachine.exe
+c:\users\anton.loof\documents\visual studio 2015\Projects\TicketMachine\TicketMachine\bin\Debug\TicketMachine.pdb
+c:\users\anton.loof\documents\visual studio 2015\Projects\TicketMachine\TicketMachine\obj\Debug\TicketMachine.csprojResolveAssemblyReference.cache
+c:\users\anton.loof\documents\visual studio 2015\Projects\TicketMachine\TicketMachine\obj\Debug\TicketMachine.exe
+c:\users\anton.loof\documents\visual studio 2015\Projects\TicketMachine\TicketMachine\obj\Debug\TicketMachine.pdb
