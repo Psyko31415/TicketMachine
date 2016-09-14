@@ -4,6 +4,11 @@ using System.Text;
 
 namespace TicketMachine
 {
+    public class SyntaxError : Exception
+    {
+        public SyntaxError(string message) : base(message){ }
+    }
+
     public class Interaction
     {
         public enum Status
@@ -12,7 +17,6 @@ namespace TicketMachine
             Ok,
             KeyNotFoundError
         }
-        private string[] functions = {"press"};
 
         private List<Section> sections;
 
@@ -37,6 +41,11 @@ namespace TicketMachine
                 {
                     inString = !inString;
                 }
+            }
+
+            if (inString)
+            {
+                throw new SyntaxError("String not closed");
             }
         }
 

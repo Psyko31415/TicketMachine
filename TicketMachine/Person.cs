@@ -1,4 +1,6 @@
-﻿namespace TicketMachine
+﻿using System;
+
+namespace TicketMachine
 {
     public class Person
     {
@@ -20,6 +22,7 @@
 
         public Interaction.Status[] Interact(Interactable obj, Interaction action)
         {
+
             return obj.Interact(this, action);
         }
 

@@ -53,6 +53,7 @@
     <Compile Include="Machine.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ScriptDatatype.cs" />
     <Compile Include="ScriptFunctionDef.cs" />
     <Compile Include="Section.cs" />
     <Compile Include="TicketMachine.cs" />
